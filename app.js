@@ -1,5 +1,17 @@
-function sayHello(name) {
-    console.log("Hello " + name);
-}
+const http = require("http");
 
-sayHello("Adam");
+const server = http.createServer((req, res) => {
+    if (req.url === "/") {
+        res.write("Hello World");
+        res.end();
+    }
+
+    if (req.url === "/test") {
+        res.write("This is a test");
+        res.end();
+    }
+});
+
+server.listen(3000);
+
+console.log("Listening on port 3000...");

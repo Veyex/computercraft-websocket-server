@@ -1,17 +1,11 @@
-const http = require("http");
+const WebS = require("ws")
+const wss = new WebS.Server({port:3000})
 
-const server = http.createServer((req, res) => {
-    if (req.url === "/") {
-        res.write("Hello World");
-        res.end();
-    }
-
-    if (req.url === "/test") {
-        res.write("This is a test");
-        res.end();
-    }
+//on client connection announce connection
+wss.on("connection", ws => {
+    console.log("connection")
+    //on msg, log msg to console
+    ws.on("message", msg => {
+        console.log("message recieved: " + msg)
+    })
 });
-
-server.listen(3000);
-
-console.log("Listening on port 3000...");

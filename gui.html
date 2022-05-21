@@ -2,10 +2,16 @@
 <html>
     <head>
         <script>
+            //create websocket connection
+            const socket = new WebSocket("ws://localhost:3000");
 
+            const sendMessage = () => {
+                socket.send("Hello from client 1")
+            }
         </script>
     </head>
     <body>
-        
+        Client 1
+        <button onclick="sendMessage()"> Send Msg </button>
     </body>
 </html>
